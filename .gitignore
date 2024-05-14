@@ -1,0 +1,6 @@
+.vs
+.vscode
+build/
+out/
+CMakeUserPresets.json
+imgui.ini
