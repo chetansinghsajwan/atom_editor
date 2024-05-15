@@ -1,9 +1,10 @@
-#pragma once
-#include "imgui.h"
+export module atom.editor:drawers.property_drawer;
+
+import atom.core;
 
 namespace atom::editor
 {
-    class property_drawer
+    export class property_drawer
     {
     public:
         property_drawer() {}

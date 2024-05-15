@@ -1,13 +1,14 @@
-#pragma once
-#include "atom/engine/ecs.h"
-#include "drawers/property_drawer.h"
-#include "drawers/transform_component_drawer.h"
-#include "drawers/sprite_component_drawer.h"
-#include "drawers/camera_component_drawer.h"
+export module atom.editor:drawers.property_drawer_provider;
+
+import atom.engine;
+import :drawers.property_drawer;
+import :drawers.transform_component_drawer;
+import :drawers.sprite_component_drawer;
+import :drawers.camera_component_drawer;
 
 namespace atom::editor
 {
-    class property_drawer_provider
+    export class property_drawer_provider
     {
     public:
         static auto get(engine::entity_component* component) -> property_drawer*

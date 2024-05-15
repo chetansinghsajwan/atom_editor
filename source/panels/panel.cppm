@@ -1,8 +1,8 @@
-#pragma once
+export module atom.editor:panels.panel;
 
 namespace atom::editor
 {
-    class panel
+    export class panel
     {
     public:
         panel() {}
