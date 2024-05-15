@@ -1,16 +1,13 @@
+export module atom.editor:application;
+
 import atom.core;
 import atom.logging;
-
-#include "atom.engine.h"
-#include "editor_layer.h"
-
-using namespace atom;
-using namespace atom::logging;
-using namespace atom::engine;
+import atom.engine;
+import :layers;
 
 namespace atom::editor
 {
-    class editor_application: public application
+    class editor_application: public engine::application
     {
     public:
         editor_application()
@@ -27,7 +24,7 @@ namespace atom::editor
 
 namespace atom::engine
 {
-    extern application* create_application()
+    extern "C++" application* create_application()
     {
         return new editor::editor_application();
     }

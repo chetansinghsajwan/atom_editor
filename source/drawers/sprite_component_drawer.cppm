@@ -1,10 +1,12 @@
-#pragma once
-#include "atom/engine/ecs.h"
-#include "drawers/property_drawer.h"
+export module atom.editor:drawers.sprite_component_drawer;
+
+import atom.core;
+import atom.engine;
+import :drawers.property_drawer;
 
 namespace atom::editor
 {
-    class sprite_component_drawer: public property_drawer
+    export class sprite_component_drawer: public property_drawer
     {
     public:
         sprite_component_drawer() {}
@@ -12,7 +14,7 @@ namespace atom::editor
     public:
         virtual auto draw() -> void override
         {
-            ImGui::Text("sprite component");
+            engine::ImGui::Text("sprite component");
         }
 
         virtual auto set_property(void* property) -> void override

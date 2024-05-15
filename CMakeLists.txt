@@ -16,7 +16,7 @@ enable_testing()
 FetchContent_Declare(
     atom_engine
     GIT_REPOSITORY "https://github.com/shifu-dev/atom.engine.git"
-    GIT_TAG "dev"
+    GIT_TAG "main"
     GIT_SHALLOW true
     EXCLUDE_FROM_ALL)
 
@@ -26,13 +26,11 @@ FetchContent_MakeAvailable(atom_engine)
 # atom.editor
 # --------------------------------------------------------------------------------------------------
 
-add_library(atom.editor STATIC)
+add_executable(atom.editor)
 
 file(GLOB_RECURSE modules "source/*.cppm")
 file(GLOB_RECURSE sources "source/*.cpp")
 
 target_sources(atom.editor PUBLIC FILE_SET CXX_MODULES FILES "${modules}")
 target_sources(atom.editor PUBLIC "${sources}")
-
-target_include_directories(atom.editor PUBLIC "source/")
 target_link_libraries(atom.editor PUBLIC atom.engine)
