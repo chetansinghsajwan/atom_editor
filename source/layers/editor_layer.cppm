@@ -206,7 +206,7 @@ namespace atom::editor
             _window = engine::window_manager::get_windows().get_mut_front();
             _logger->log_info("using window '{}'.", _window->get_name());
 
-            ATOM_DEBUG_ASSERTS(_window != nullptr);
+            contract_debug_asserts(_window != nullptr);
         }
 
         auto _setup_keyboard() -> void
@@ -221,7 +221,7 @@ namespace atom::editor
                 }
             }
 
-            ATOM_DEBUG_ASSERTS(_keyboard != nullptr);
+            contract_debug_asserts(_keyboard != nullptr);
         }
 
         auto _setup_mouse() -> void
@@ -236,7 +236,7 @@ namespace atom::editor
                 }
             }
 
-            ATOM_DEBUG_ASSERTS(_mouse != nullptr);
+            contract_debug_asserts(_mouse != nullptr);
         }
 
     private:
