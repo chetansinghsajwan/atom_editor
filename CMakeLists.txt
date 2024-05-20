@@ -25,3 +25,11 @@ target_sources(
     PUBLIC "${sources}")
 
 target_link_libraries(atom.editor PRIVATE atom::atom.core atom::atom.logging atom::atom.engine)
+
+# --------------------------------------------------------------------------------------------------
+# install phase
+# --------------------------------------------------------------------------------------------------
+
+install(
+    TARGETS atom.editor
+    RUNTIME DESTINATION "bin")
