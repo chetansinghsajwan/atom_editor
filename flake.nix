@@ -36,7 +36,8 @@
         clang_scan_deps_include_paths =
             inputs.atom_core.clang_scan_deps_include_paths + 
             inputs.atom_logging.clang_scan_deps_include_paths + 
-            inputs.atom_engine.clang_scan_deps_include_paths;
+            inputs.atom_engine.clang_scan_deps_include_paths +
+            " -I ${atom_engine_pkg}/include";
 
         derivation = stdenv.mkDerivation rec {
 
@@ -44,13 +45,11 @@
 
             src = ./.;
 
-            propogatedNativeBuildInputs = with pkgs; [
+            nativeBuildInputs = with pkgs; [
                 atom_core_pkg
                 atom_logging_pkg
                 atom_engine_pkg
-            ];
 
-            nativeBuildInputs = with pkgs; [
                 cmake
                 cmake-format
                 ninja
@@ -58,15 +57,18 @@
             ];
 
             configurePhase = ''
-                cmake -S . -B build
+                cmake -S . -B build \
+                    -D atom_core_DIR:PATH=${atom_core_pkg} \
+                    -D atom_core_DIR:PATH=${atom_logging_pkg} \
+                    -D atom_core_DIR:PATH=${atom_engine_pkg};
             '';
 
             buildPhase = ''
-                cmake --build build --target atom.editor
+                cmake --build build --target atom.editor;
             '';
 
             installPhase = ''
-                cmake --install build --prefix $out
+                cmake --install build --prefix $out;
             '';
 
             CXXFLAGS = clang_scan_deps_include_paths;
