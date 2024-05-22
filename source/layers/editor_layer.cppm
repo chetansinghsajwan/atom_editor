@@ -62,7 +62,7 @@ namespace atom::editor
             _camera_entity->emplace_component<engine::camera_component>();
 
             _stairs_entity = _entity_manager->create_entity("stairs");
-            _stairs_entity->emplace_component<engine::sprite_component>(engine::vec4{ 0, 1, 0, 1 });
+            _stairs_entity->emplace_component<engine::sprite_component>(engine::color{ 0, 1, 0, 1 });
         }
 
         virtual auto on_update(engine::time_step delta_time) -> void override
