@@ -1,5 +1,5 @@
 {
-    description = "atom.editor";
+    description = "atom-editor";
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -29,19 +29,17 @@
         pkgs = inputs.nixpkgs.legacyPackages.${system};
         lib = pkgs.lib;
         stdenv = pkgs.llvmPackages_18.libcxxStdenv;
+        atom_core_env = inputs.atom_core.env.${system}.default;
         atom_core_pkg = inputs.atom_core.packages.${system}.default;
+        atom_logging_env = inputs.atom_logging.env.${system}.default;
         atom_logging_pkg = inputs.atom_logging.packages.${system}.default;
+        atom_engine_env = inputs.atom_engine.env.${system}.default;
         atom_engine_pkg = inputs.atom_engine.packages.${system}.default;
+    in rec
+    {
+        env.${system}.default = rec {
 
-        clang_scan_deps_include_paths =
-            inputs.atom_core.clang_scan_deps_include_paths + 
-            inputs.atom_logging.clang_scan_deps_include_paths + 
-            inputs.atom_engine.clang_scan_deps_include_paths +
-            " -I ${atom_engine_pkg}/include";
-
-        derivation = stdenv.mkDerivation rec {
-
-            name = "atom.editor";
+            name = "atom-editor";
 
             src = ./.;
 
@@ -71,17 +69,36 @@
                 cmake --install build --prefix $out;
             '';
 
-            CXXFLAGS = clang_scan_deps_include_paths;
-            CMAKE_GENERATOR = "Ninja";
-            CMAKE_BUILD_TYPE = "Debug";
-            CMAKE_EXPORT_COMPILE_COMMANDS = "true";
+            clang_scan_deps_include_paths = [
+                "${atom_engine_pkg}/include"
+            ];
+
+            envVars = {
+                CXXFLAGS = lib.strings.concatMapStrings (v: " -I " + v) (
+                    atom_core_env.clang_scan_deps_include_paths ++
+                    atom_logging_env.clang_scan_deps_include_paths ++
+                    atom_engine_env.clang_scan_deps_include_paths ++
+                    clang_scan_deps_include_paths);
+
+                CMAKE_GENERATOR = "Ninja";
+                CMAKE_BUILD_TYPE = "Debug";
+                CMAKE_EXPORT_COMPILE_COMMANDS = "true";
+            };
         };
-    in
-    {
-        inherit clang_scan_deps_include_paths;
 
-        devShells.${system}.default = derivation;
+        devShells.${system}.default = with env.${system}.default; stdenv.mkDerivation ({
+            inherit name;
+            inherit src;
+            inherit nativeBuildInputs;
+        } // envVars);
 
-        packages.${system}.default = derivation;
+        packages.${system}.default = with env.${system}.default; stdenv.mkDerivation ({
+            inherit name;
+            inherit src;
+            inherit nativeBuildInputs;
+            inherit configurePhase;
+            inherit buildPhase;
+            inherit installPhase;
+        } // envVars);
     };
 }
