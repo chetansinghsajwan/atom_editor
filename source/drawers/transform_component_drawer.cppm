@@ -17,15 +17,15 @@ namespace atom::editor
             if (_transform == nullptr)
                 return;
 
-            engine::vec3 position = _transform->get_position();
+            engine::f32vec3 position = _transform->get_position();
             _draw_vec3("position", &position);
             _transform->set_position(position);
 
-            engine::vec3 rotation = engine::math::degrees(_transform->get_rotation());
+            engine::f32vec3 rotation = engine::math::degrees(_transform->get_rotation());
             _draw_vec3("rotation", &rotation);
             _transform->set_rotation(engine::math::radians(rotation));
 
-            engine::vec3 scale = _transform->get_scale();
+            engine::f32vec3 scale = _transform->get_scale();
             _draw_vec3("scale", &scale);
             _transform->set_scale(scale);
         }
@@ -46,8 +46,8 @@ namespace atom::editor
         }
 
     private:
-        auto _draw_vec3(string_view label, engine::vec3* values,
-            engine::vec3 reset_values = { 0, 0, 0 }, float column_width = 100) -> void
+        auto _draw_vec3(string_view label, engine::f32vec3* values,
+            engine::f32vec3 reset_values = engine::f32vec3{ 0 }, f32 column_width = 100) -> void
         {
             engine::ImGui::PushID(label.get_data());
 
@@ -59,13 +59,17 @@ namespace atom::editor
             engine::ImGui::PushMultiItemsWidths(3, engine::ImGui::CalcItemWidth());
             engine::ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, engine::ImVec2{ 0, 0 });
 
-            float lineHeight = engine::GImGui->Font->FontSize + engine::GImGui->Style.FramePadding.y * 2.0f;
-            engine::ImVec2 buttonSize = { lineHeight + 3.0f, lineHeight };
+            f32 line_height =
+                engine::GImGui->Font->FontSize + engine::GImGui->Style.FramePadding.y * 2.0f;
+            engine::ImVec2 button_size = { line_height + 3.0f, line_height };
 
-            engine::ImGui::PushStyleColor(ImGuiCol_Button, engine::ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f });
-            engine::ImGui::PushStyleColor(ImGuiCol_ButtonHovered, engine::ImVec4{ 0.9f, 0.2f, 0.2f, 1.0f });
-            engine::ImGui::PushStyleColor(ImGuiCol_ButtonActive, engine::ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f });
-            if (engine::ImGui::Button("X", buttonSize))
+            engine::ImGui::PushStyleColor(
+                ImGuiCol_Button, engine::ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f });
+            engine::ImGui::PushStyleColor(
+                ImGuiCol_ButtonHovered, engine::ImVec4{ 0.9f, 0.2f, 0.2f, 1.0f });
+            engine::ImGui::PushStyleColor(
+                ImGuiCol_ButtonActive, engine::ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f });
+            if (engine::ImGui::Button("X", button_size))
             {
                 values->x = reset_values.x;
             }
@@ -76,10 +80,13 @@ namespace atom::editor
             engine::ImGui::PopItemWidth();
             engine::ImGui::SameLine();
 
-            engine::ImGui::PushStyleColor(ImGuiCol_Button, engine::ImVec4{ 0.2f, 0.7f, 0.2f, 1.0f });
-            engine::ImGui::PushStyleColor(ImGuiCol_ButtonHovered, engine::ImVec4{ 0.3f, 0.8f, 0.3f, 1.0f });
-            engine::ImGui::PushStyleColor(ImGuiCol_ButtonActive, engine::ImVec4{ 0.2f, 0.7f, 0.2f, 1.0f });
-            if (engine::ImGui::Button("Y", buttonSize))
+            engine::ImGui::PushStyleColor(
+                ImGuiCol_Button, engine::ImVec4{ 0.2f, 0.7f, 0.2f, 1.0f });
+            engine::ImGui::PushStyleColor(
+                ImGuiCol_ButtonHovered, engine::ImVec4{ 0.3f, 0.8f, 0.3f, 1.0f });
+            engine::ImGui::PushStyleColor(
+                ImGuiCol_ButtonActive, engine::ImVec4{ 0.2f, 0.7f, 0.2f, 1.0f });
+            if (engine::ImGui::Button("Y", button_size))
             {
                 values->y = reset_values.y;
             }
@@ -90,10 +97,13 @@ namespace atom::editor
             engine::ImGui::PopItemWidth();
             engine::ImGui::SameLine();
 
-            engine::ImGui::PushStyleColor(ImGuiCol_Button, engine::ImVec4{ 0.1f, 0.25f, 0.8f, 1.0f });
-            engine::ImGui::PushStyleColor(ImGuiCol_ButtonHovered, engine::ImVec4{ 0.2f, 0.35f, 0.9f, 1.0f });
-            engine::ImGui::PushStyleColor(ImGuiCol_ButtonActive, engine::ImVec4{ 0.1f, 0.25f, 0.8f, 1.0f });
-            if (engine::ImGui::Button("Z", buttonSize))
+            engine::ImGui::PushStyleColor(
+                ImGuiCol_Button, engine::ImVec4{ 0.1f, 0.25f, 0.8f, 1.0f });
+            engine::ImGui::PushStyleColor(
+                ImGuiCol_ButtonHovered, engine::ImVec4{ 0.2f, 0.35f, 0.9f, 1.0f });
+            engine::ImGui::PushStyleColor(
+                ImGuiCol_ButtonActive, engine::ImVec4{ 0.1f, 0.25f, 0.8f, 1.0f });
+            if (engine::ImGui::Button("Z", button_size))
             {
                 values->z = reset_values.z;
             }
