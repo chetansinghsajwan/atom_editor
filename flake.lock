@@ -38,11 +38,11 @@
         "nixpkgs_glfw": "nixpkgs_glfw"
       },
       "locked": {
-        "lastModified": 1716414787,
-        "narHash": "sha256-/9/x7Ez55JneOTkHDiLjViFgO7zDX/hzNj6H2sMCXIE=",
+        "lastModified": 1716554027,
+        "narHash": "sha256-Fc/ZkjI/O80Rn7GYVFQsUZBhJblpqQXw+c8yQWvNq4Q=",
         "owner": "shifu-dev",
         "repo": "atom.engine",
-        "rev": "1dc44968964e4e749483e302625a19ed22950e90",
+        "rev": "1eee2d54963753c99e4e9432a826b9f23a5b79c9",
         "type": "github"
       },
       "original": {
@@ -126,11 +126,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1716293225,
-        "narHash": "sha256-pU9ViBVE3XYb70xZx+jK6SEVphvt7xMTbm6yDIF4xPs=",
+        "lastModified": 1716330097,
+        "narHash": "sha256-8BO3B7e3BiyIDsaKA0tY8O88rClYRTjvAp66y+VBUeU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3eaeaeb6b1e08a016380c279f8846e0bd8808916",
+        "rev": "5710852ba686cc1fd0d3b8e22b3117d43ba374c2",
         "type": "github"
       },
       "original": {
