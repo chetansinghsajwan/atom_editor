@@ -42,11 +42,11 @@ namespace atom::editor
                 "/home/chetan/projects/atom-workspace/atom.editor/assets/textures/rpg-pack.png");
 
             _stairs_sprite = engine::sprite::make_from_coords(
-                _rpg_texture, engine::vec2{ 7, 6 }, engine::vec2{ 128, 128 });
+                _rpg_texture, engine::f32vec2{ 7, 6 }, engine::f32vec2{ 128, 128 });
             _barrel_sprite = engine::sprite::make_from_coords(
-                _rpg_texture, engine::vec2{ 8, 2 }, engine::vec2{ 128, 128 });
+                _rpg_texture, engine::f32vec2{ 8, 2 }, engine::f32vec2{ 128, 128 });
             _tree_sprite = engine::sprite::make_from_coords(
-                _rpg_texture, engine::vec2{ 2, 1 }, engine::vec2{ 128, 128 }, engine::vec2{ 1, 2 });
+                _rpg_texture, engine::f32vec2{ 2, 1 }, engine::f32vec2{ 128, 128 }, engine::f32vec2{ 1, 2 });
 
             _frame_buffer = engine::frame_buffer::create({
                 .width = 1280,
@@ -176,7 +176,7 @@ namespace atom::editor
                 engine::ImGui::Begin("viewport");
 
                 engine::ImVec2 imgui_viewport_size = engine::ImGui::GetContentRegionAvail();
-                _viewport_size = engine::vec2{ imgui_viewport_size.x, imgui_viewport_size.y };
+                _viewport_size = engine::f32vec2{ imgui_viewport_size.x, imgui_viewport_size.y };
 
                 _is_viewport_focused = engine::ImGui::IsWindowFocused();
                 _is_viewport_hovered = engine::ImGui::IsWindowHovered();
@@ -254,7 +254,7 @@ namespace atom::editor
         engine::entity_manager* _entity_manager;
 
         engine::frame_buffer* _frame_buffer;
-        engine::vec2 _viewport_size = engine::vec2{ 0, 0 };
+        engine::f32vec2 _viewport_size = engine::f32vec2{ 0 };
         bool _is_viewport_focused = false;
         bool _is_viewport_hovered = false;
 
