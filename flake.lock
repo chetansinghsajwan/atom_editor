@@ -38,11 +38,11 @@
         "nixpkgs_glfw": "nixpkgs_glfw"
       },
       "locked": {
-        "lastModified": 1716743445,
-        "narHash": "sha256-zRcUnDt+fGK4/Gvn+lH7z0BaH+Yv+/t/VSImuM33xHw=",
+        "lastModified": 1716841275,
+        "narHash": "sha256-WW7e71pN43SJ7ziQLJWy01cI0Jgrvk/Q+lpD3pxfbII=",
         "owner": "shifu-dev",
         "repo": "atom.engine",
-        "rev": "0e328a5b767ee7415366e14533e72a3724540afd",
+        "rev": "3d4f8d8522db750e0f0e3582309f9ef2fdf258c4",
         "type": "github"
       },
       "original": {
