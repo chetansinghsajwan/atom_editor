@@ -203,7 +203,7 @@ namespace atom::editor
 
         auto _setup_window() -> void
         {
-            _window = engine::window_manager::get_windows().get_mut_front();
+            _window = engine::window_manager::get_windows() | ranges::get_mut_front();
             _logger->log_info("using window '{}'.", _window->get_name());
 
             contract_debug_asserts(_window != nullptr);
