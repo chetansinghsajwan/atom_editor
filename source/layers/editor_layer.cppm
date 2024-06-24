@@ -45,8 +45,8 @@ namespace atom::editor
                 _rpg_texture, engine::f32vec2{ 7, 6 }, engine::f32vec2{ 128, 128 });
             _barrel_sprite = engine::sprite::make_from_coords(
                 _rpg_texture, engine::f32vec2{ 8, 2 }, engine::f32vec2{ 128, 128 });
-            _tree_sprite = engine::sprite::make_from_coords(
-                _rpg_texture, engine::f32vec2{ 2, 1 }, engine::f32vec2{ 128, 128 }, engine::f32vec2{ 1, 2 });
+            _tree_sprite = engine::sprite::make_from_coords(_rpg_texture, engine::f32vec2{ 2, 1 },
+                engine::f32vec2{ 128, 128 }, engine::f32vec2{ 1, 2 });
 
             _frame_buffer = engine::frame_buffer::create({
                 .width = 1280,
@@ -62,7 +62,8 @@ namespace atom::editor
             _camera_entity->emplace_component<engine::camera_component>();
 
             _stairs_entity = _entity_manager->create_entity("stairs");
-            _stairs_entity->emplace_component<engine::sprite_component>(engine::color{ 0, 1, 0, 1 });
+            _stairs_entity->emplace_component<engine::sprite_component>(
+                engine::color{ 0, 1, 0, 1 });
         }
 
         virtual auto on_update(engine::time_step delta_time) -> void override
