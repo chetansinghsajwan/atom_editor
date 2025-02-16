@@ -1,8 +1,8 @@
 export module atom.editor:application;
 
-import atom.core;
-import atom.logging;
-import atom.engine;
+import atom_core;
+import atom_logging;
+import atom_engine;
 import :layers;
 
 namespace atom::editor

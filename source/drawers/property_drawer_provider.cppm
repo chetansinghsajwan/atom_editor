@@ -1,6 +1,6 @@
 export module atom.editor:drawers.property_drawer_provider;
 
-import atom.engine;
+import atom_engine;
 import :drawers.property_drawer;
 import :drawers.transform_component_drawer;
 import :drawers.sprite_component_drawer;

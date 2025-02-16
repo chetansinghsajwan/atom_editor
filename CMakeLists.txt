@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.28)
 project(
-    atom.editor
+    atom_editor
     VERSION 0.1.0
     LANGUAGES CXX C)
 
@@ -11,25 +11,23 @@ find_package(atom_logging REQUIRED)
 find_package(atom_engine REQUIRED)
 
 # --------------------------------------------------------------------------------------------------
-# atom.editor
+# atom_editor
 # --------------------------------------------------------------------------------------------------
 
-add_executable(atom.editor)
+add_executable(atom_editor)
 
-file(GLOB_RECURSE modules "source/*.cppm")
-file(GLOB_RECURSE sources "source/*.cpp")
+file(GLOB_RECURSE atom_editor_modules "source/*.cppm")
+file(GLOB_RECURSE atom_editor_sources "source/*.cpp")
 
 target_sources(
-    atom.editor
-    PUBLIC FILE_SET CXX_MODULES FILES "${modules}"
-    PUBLIC "${sources}")
+    atom_editor
+    PUBLIC FILE_SET CXX_MODULES FILES "${atom_editor_modules}"
+    PUBLIC "${atom_editor_sources}")
 
-target_link_libraries(atom.editor PRIVATE atom::atom.core atom::atom.logging atom::atom.engine)
+target_link_libraries(atom_editor PRIVATE atom_core atom_logging atom_engine)
 
 # --------------------------------------------------------------------------------------------------
 # install phase
 # --------------------------------------------------------------------------------------------------
 
-install(
-    TARGETS atom.editor
-    RUNTIME DESTINATION "bin")
+install(TARGETS atom_editor RUNTIME DESTINATION "bin")

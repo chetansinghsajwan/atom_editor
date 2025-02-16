@@ -1,7 +1,7 @@
 export module atom.editor:panels.inspector_panel;
 
-import atom.core;
-import atom.engine;
+import atom_core;
+import atom_engine;
 import :drawers;
 import :panels.panel;
 

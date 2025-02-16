@@ -1,7 +1,7 @@
 export module atom.editor:drawers.camera_component_drawer;
 
-import atom.core;
-import atom.engine;
+import atom_core;
+import atom_engine;
 import :drawers.property_drawer;
 
 namespace atom::editor

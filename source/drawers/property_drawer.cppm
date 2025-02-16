@@ -1,6 +1,6 @@
 export module atom.editor:drawers.property_drawer;
 
-import atom.core;
+import atom_core;
 
 namespace atom::editor
 {

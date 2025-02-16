@@ -1,7 +1,7 @@
 export module atom.editor:panels.entity_explorer_panel;
 
 import std;
-import atom.engine;
+import atom_engine;
 import :panels.panel;
 
 namespace atom::editor
