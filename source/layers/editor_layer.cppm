@@ -7,7 +7,7 @@ import :panels;
 
 namespace atom::editor
 {
-    class editor_layer: public engine::layer
+    struct editor_layer: public engine::layer
     {
     public:
         editor_layer()

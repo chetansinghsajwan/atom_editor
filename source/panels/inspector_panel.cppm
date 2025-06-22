@@ -7,7 +7,7 @@ import :panels.panel;
 
 namespace atom::editor
 {
-    class inspector_panel: public panel
+    struct inspector_panel: public panel
     {
     public:
         virtual auto on_imgui_render() -> void override
@@ -18,7 +18,7 @@ namespace atom::editor
             {
                 string_view entity_name = _entity->get_name();
 
-                // todo: replace this with a atom.core.buffer helper class.
+                // todo: replace this with a atom.core.buffer helper struct.
                 char buffer[100];
                 std::copy(entity_name.get_data(), entity_name.get_data() + entity_name.get_count(),
                     buffer);

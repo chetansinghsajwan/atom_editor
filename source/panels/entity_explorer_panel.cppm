@@ -6,7 +6,7 @@ import :panels.panel;
 
 namespace atom::editor
 {
-    class entity_explorer_panel: public panel
+    struct entity_explorer_panel: public panel
     {
     public:
         entity_explorer_panel(engine::entity_manager* manager)

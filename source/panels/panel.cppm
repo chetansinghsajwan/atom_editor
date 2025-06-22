@@ -2,7 +2,7 @@ export module atom.editor:panels.panel;
 
 namespace atom::editor
 {
-    export class panel
+    export struct panel
     {
     public:
         panel() {}

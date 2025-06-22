@@ -8,7 +8,7 @@ import :drawers.camera_component_drawer;
 
 namespace atom::editor
 {
-    export class property_drawer_provider
+    export struct property_drawer_provider
     {
     public:
         static auto get(engine::entity_component* component) -> property_drawer*

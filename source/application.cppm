@@ -7,7 +7,7 @@ import :layers;
 
 namespace atom::editor
 {
-    class editor_application: public engine::application
+    struct editor_application: public engine::application
     {
     public:
         editor_application()

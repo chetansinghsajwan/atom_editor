@@ -6,7 +6,7 @@ import :drawers.property_drawer;
 
 namespace atom::editor
 {
-    export class transform_component_drawer: public property_drawer
+    export struct transform_component_drawer: public property_drawer
     {
     public:
         transform_component_drawer() {}

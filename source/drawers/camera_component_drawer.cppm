@@ -6,7 +6,7 @@ import :drawers.property_drawer;
 
 namespace atom::editor
 {
-    export class camera_component_drawer: public property_drawer
+    export struct camera_component_drawer: public property_drawer
     {
     public:
         camera_component_drawer() {}

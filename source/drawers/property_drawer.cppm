@@ -4,7 +4,7 @@ import atom_core;
 
 namespace atom::editor
 {
-    export class property_drawer
+    export struct property_drawer
     {
     public:
         property_drawer() {}
